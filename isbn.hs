@@ -2,12 +2,14 @@ import Data.Char
 import Data.List
 import Data.String.Utils
 
+first_position = 1
+
 isbn10_validator :: String -> Bool
 
 isbn10_validator number = (generated_digit == last_digit)
     where
         cleansed_isbn = isbn_cleaner number
-        generated_digit = digit_generator (init(digits(cleansed_isbn))) 1 0
+        generated_digit = digit_generator (init(digits(cleansed_isbn))) first_position 0
         last_digit = last cleansed_isbn
 
 digit_generator :: [Int] -> Int -> Int -> Char
